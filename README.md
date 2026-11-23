@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ku" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaleSnap — Product Receipt Card Generator</title>
+  <title>SaleSnap — دروستکەرێ کارتا وەصلا بەرهەمی</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Noto Naskh Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: #f3f5f8;
       color: #0f172a;
     }
@@ -38,12 +38,12 @@
         </div>
         <div>
           <h1 class="text-base font-bold tracking-tight text-slate-900 leading-tight">SaleSnap</h1>
-          <p class="text-xs text-slate-500">Photo &amp; Order Receipt Generator</p>
+          <p class="text-xs text-slate-500">دروستکەرێ وێنەی و وەصلا داخوازیا</p>
         </div>
       </div>
 
-      <button id="resetBtn" type="button" class="text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition">
-        Clear All
+      <button id="resetBtn" type="button" class="text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition cursor-pointer">
+        پاککرنا هەمیێ
       </button>
     </div>
   </header>
@@ -57,9 +57,9 @@
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
         <div class="flex items-center justify-between mb-3">
           <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
-            1. Product Photo
+            ١. وێنەیێ بەرهەمی
           </span>
-          <span class="text-xs text-slate-400">Tap box or paste image</span>
+          <span class="text-xs text-slate-400">پەنجەی ل خانەی بدە یان وێنەی پێست بکە</span>
         </div>
 
         <div id="dropZone" class="relative rounded-xl border-2 border-dashed border-slate-300 hover:border-emerald-500 bg-slate-50 hover:bg-emerald-50/40 transition-all overflow-hidden">
@@ -68,7 +68,7 @@
             type="file"
             id="photoInput"
             accept="image/*"
-            aria-label="Select product photo"
+            aria-label="وێنەیێ بەرهەمی هەلبژێرە"
             class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
           />
 
@@ -79,16 +79,16 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            <p class="text-sm font-semibold text-slate-800">Tap here to select or take product photo</p>
-            <p class="text-xs text-slate-500 mt-1">Supports JPG, PNG, WEBP, or clipboard paste</p>
+            <p class="text-sm font-semibold text-slate-800">ل ڤێرێ بدە بو هەلبژارتن یان گرتنا وێنەیێ بەرهەمی</p>
+            <p class="text-xs text-slate-500 mt-1">پشتەڤانیا JPG، PNG، WEBP، یان پێستکرنا ژ کلیبۆردێ دکەت</p>
           </div>
 
           <!-- Selected Image Preview -->
           <div id="uploadPreviewWrap" class="hidden relative bg-slate-900">
-            <img id="uploadPreviewImg" alt="Selected product" class="w-full max-h-64 object-contain mx-auto pointer-events-none" />
-            <div class="absolute bottom-3 right-3 z-30 flex gap-2">
-              <button type="button" id="removePhotoBtn" class="bg-red-600/95 hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">
-                Remove
+            <img id="uploadPreviewImg" alt="بەرهەمێ هەلبژارتی" class="w-full max-h-64 object-contain mx-auto pointer-events-none" />
+            <div class="absolute bottom-3 left-3 z-30 flex gap-2">
+              <button type="button" id="removePhotoBtn" class="bg-red-600/95 hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow cursor-pointer">
+                لابرن
               </button>
             </div>
           </div>
@@ -99,17 +99,17 @@
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
         <div class="flex items-center justify-between">
           <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
-            2. Sale &amp; Buyer Information
+            ٢. پێزانینێن فروتنێ و کریاری
           </span>
         </div>
 
         <!-- Product Name -->
         <div>
-          <label for="productName" class="block text-sm font-semibold text-slate-700 mb-1.5">Product Name</label>
+          <label for="productName" class="block text-sm font-semibold text-slate-700 mb-1.5">ناڤێ بەرهەمی</label>
           <input
             type="text"
             id="productName"
-            placeholder="e.g. Samsung Galaxy S24 Ultra / Olive Oil Box"
+            placeholder="بو نموونە: Samsung Galaxy S24 Ultra / کارتونا زەیتا زەیتوونا"
             class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
           />
         </div>
@@ -117,17 +117,17 @@
         <!-- Price per Box + Currency -->
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
           <div class="sm:col-span-8">
-            <label for="boxPrice" class="block text-sm font-semibold text-slate-700 mb-1.5">Price per Box</label>
+            <label for="boxPrice" class="block text-sm font-semibold text-slate-700 mb-1.5">بهایێ ئێک کارتۆنێ</label>
             <input
               type="text"
               inputmode="decimal"
               id="boxPrice"
-              placeholder="e.g. 25,000"
+              placeholder="بو نموونە: 25,000"
               class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
             />
           </div>
           <div class="sm:col-span-4">
-            <label for="currency" class="block text-sm font-semibold text-slate-700 mb-1.5">Currency</label>
+            <label for="currency" class="block text-sm font-semibold text-slate-700 mb-1.5">دراڤ</label>
             <select
               id="currency"
               class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-900 bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
@@ -140,13 +140,13 @@
 
         <!-- Amount of Boxes -->
         <div>
-          <label for="boxAmount" class="block text-sm font-semibold text-slate-700 mb-1.5">Amount of Boxes</label>
+          <label for="boxAmount" class="block text-sm font-semibold text-slate-700 mb-1.5">هژمارا کارتۆنا</label>
           <div class="flex items-center gap-2">
             <button
               type="button"
               id="decreaseBoxBtn"
-              aria-label="Decrease boxes"
-              class="w-11 h-11 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-lg font-bold text-slate-700 flex items-center justify-center transition select-none"
+              aria-label="کێمکرنا کارتۆنا"
+              class="w-11 h-11 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-lg font-bold text-slate-700 flex items-center justify-center transition select-none cursor-pointer"
             >−</button>
             <input
               type="number"
@@ -159,8 +159,8 @@
             <button
               type="button"
               id="increaseBoxBtn"
-              aria-label="Increase boxes"
-              class="w-11 h-11 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-lg font-bold text-slate-700 flex items-center justify-center transition select-none"
+              aria-label="زێدەکرنا کارتۆنا"
+              class="w-11 h-11 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-lg font-bold text-slate-700 flex items-center justify-center transition select-none cursor-pointer"
             >+</button>
           </div>
         </div>
@@ -168,10 +168,10 @@
         <!-- Live Total Calculation Banner -->
         <div class="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 flex items-center justify-between">
           <div>
-            <p class="text-xs font-semibold text-emerald-800">Total Money (Amount × Box Price)</p>
-            <p id="formulaHint" class="text-xs text-emerald-600 mt-0.5">1 box × 0 IQD</p>
+            <p class="text-xs font-semibold text-emerald-800">کویێ پارەی (هژمارا کارتۆنا × بهایێ کارتۆنێ)</p>
+            <p id="formulaHint" class="text-xs text-emerald-600 mt-0.5">1 کارتۆن × 0 IQD</p>
           </div>
-          <div class="text-right">
+          <div class="text-left">
             <p id="totalDisplay" class="text-lg font-extrabold text-emerald-900 tracking-tight">0 IQD</p>
           </div>
         </div>
@@ -180,19 +180,19 @@
 
         <!-- Buyer Name -->
         <div>
-          <label for="buyerName" class="block text-sm font-semibold text-slate-700 mb-1.5">Buyer Name</label>
+          <label for="buyerName" class="block text-sm font-semibold text-slate-700 mb-1.5">ناڤێ کریاری</label>
           <input
             type="text"
             id="buyerName"
-            placeholder="e.g. Ali Mohammed"
+            placeholder="بو نموونە: عەلی محەمەد"
             class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
           />
         </div>
 
         <!-- Iraqi Phone Number (+964) -->
         <div>
-          <label for="buyerPhone" class="block text-sm font-semibold text-slate-700 mb-1.5">Iraqi Phone Number</label>
-          <div class="flex rounded-xl border border-slate-300 overflow-hidden focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 transition">
+          <label for="buyerPhone" class="block text-sm font-semibold text-slate-700 mb-1.5">ژمارا تەلەفۆنا عێراقێ</label>
+          <div dir="ltr" class="flex rounded-xl border border-slate-300 overflow-hidden focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 transition">
             <span class="inline-flex items-center gap-1.5 px-3.5 bg-slate-100 border-r border-slate-300 text-sm font-bold text-slate-700 select-none">
               <span>🇮🇶</span>
               <span>+964</span>
@@ -203,10 +203,10 @@
               id="buyerPhone"
               maxlength="13"
               placeholder="750 123 4567"
-              class="flex-1 px-3.5 py-2.5 text-sm font-semibold text-slate-900 placeholder-slate-400 outline-none"
+              class="flex-1 px-3.5 py-2.5 text-sm font-semibold text-slate-900 placeholder-slate-400 outline-none text-left"
             />
           </div>
-          <p class="text-[11px] text-slate-400 mt-1">Leading 0 is removed automatically (e.g. 0770... → +964 770...)</p>
+          <p class="text-[11px] text-slate-400 mt-1">سفرێ دەستپێکێ بخو دهێتە لابرن (بو نموونە: 0770... → +964 770...)</p>
         </div>
       </div>
     </section>
@@ -215,7 +215,7 @@
     <section class="lg:col-span-6 space-y-4 lg:sticky lg:top-20">
       <div class="flex items-center justify-between">
         <span class="text-xs font-bold uppercase tracking-wider text-slate-600">
-          3. Live Combined Card Preview
+          ٣. دیتنا ڕاستەوخۆ یا کارتا هەڤبەرکری
         </span>
         <span id="previewDate" class="text-xs text-slate-400"></span>
       </div>
@@ -224,12 +224,12 @@
       <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
         <!-- Card Image Area -->
         <div class="bg-slate-900 relative flex items-center justify-center min-h-[220px] max-h-[320px] overflow-hidden">
-          <img id="cardPreviewImg" alt="Product" class="hidden w-full max-h-[320px] object-contain" />
+          <img id="cardPreviewImg" alt="بەرهەم" class="hidden w-full max-h-[320px] object-contain" />
           <div id="cardPlaceholder" class="py-14 px-6 text-center text-slate-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            <p class="text-xs font-medium">Product photo will appear here</p>
+            <p class="text-xs font-medium">وێنەیێ بەرهەمی دێ ل ڤێرێ دیار بیت</p>
           </div>
         </div>
 
@@ -237,8 +237,8 @@
         <div class="p-5 space-y-4">
           <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3.5">
             <div>
-              <p class="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Product</p>
-              <h2 id="cardProductName" class="text-lg font-extrabold text-slate-900 mt-0.5">Product Name</h2>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-emerald-600">بەرهەم</p>
+              <h2 id="cardProductName" class="text-lg font-extrabold text-slate-900 mt-0.5">ناڤێ بەرهەمی</h2>
             </div>
             <span id="cardDateBadge" class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md shrink-0"></span>
           </div>
@@ -246,15 +246,15 @@
           <!-- Boxes, Box Price, Total Money -->
           <div class="grid grid-cols-3 gap-2.5 bg-slate-50 rounded-xl p-3 border border-slate-100">
             <div>
-              <p class="text-[11px] text-slate-500 font-medium">Boxes</p>
-              <p id="cardBoxAmount" class="text-sm font-bold text-slate-900 mt-0.5">1</p>
+              <p class="text-[11px] text-slate-500 font-medium">کارتۆن</p>
+              <p id="cardBoxAmount" class="text-sm font-bold text-slate-900 mt-0.5">1 کارتۆن</p>
             </div>
             <div>
-              <p class="text-[11px] text-slate-500 font-medium">Box Price</p>
+              <p class="text-[11px] text-slate-500 font-medium">بهایێ کارتۆنێ</p>
               <p id="cardBoxPrice" class="text-sm font-bold text-slate-900 mt-0.5">0 IQD</p>
             </div>
-            <div class="text-right">
-              <p class="text-[11px] text-emerald-700 font-semibold">Total Money</p>
+            <div class="text-left">
+              <p class="text-[11px] text-emerald-700 font-semibold">کویێ پارەی</p>
               <p id="cardTotalMoney" class="text-sm font-extrabold text-emerald-700 mt-0.5">0 IQD</p>
             </div>
           </div>
@@ -262,11 +262,11 @@
           <!-- Buyer Info -->
           <div class="grid grid-cols-2 gap-3 pt-1">
             <div>
-              <p class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">Buyer Name</p>
+              <p class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">ناڤێ کریاری</p>
               <p id="cardBuyerName" class="text-sm font-bold text-slate-800 mt-0.5">—</p>
             </div>
-            <div class="text-right">
-              <p class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">Phone Number</p>
+            <div class="text-left">
+              <p class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">ژمارا تەلەفۆنێ</p>
               <p id="cardBuyerPhone" dir="ltr" class="text-sm font-bold text-slate-800 mt-0.5">+964 —</p>
             </div>
           </div>
@@ -283,7 +283,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-          <span>Save Image with Info</span>
+          <span>خەزنکرنا وێنەی ب پێزانینا</span>
         </button>
 
         <button
@@ -294,7 +294,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
-          <span>Share to Buyer</span>
+          <span>هنارتن بو کریاری</span>
         </button>
       </div>
 
@@ -441,6 +441,10 @@
       return `${formatted} ${currency}`;
     }
 
+    function formatBoxLabel(boxes) {
+      return boxes === 1 ? '1 کارتۆن' : `${boxes} کارتۆن`;
+    }
+
     function formatIraqiPhone(raw) {
       let digits = raw.replace(/\D/g, '');
       if (digits.startsWith('964')) digits = digits.slice(3);
@@ -486,7 +490,7 @@
     });
 
     function updatePreview() {
-      const product = productNameInput.value.trim() || 'Product Name';
+      const product = productNameInput.value.trim() || 'ناڤێ بەرهەمی';
       const price = parseNumericValue(boxPriceInput.value);
       const boxes = Math.max(1, parseInt(boxAmountInput.value, 10) || 1);
       const currency = currencySelect.value;
@@ -499,18 +503,18 @@
       const formattedPrice = formatMoney(price, currency);
       const formattedTotal = formatMoney(total, currency);
 
-      formulaHint.textContent = `${boxes} ${boxes === 1 ? 'box' : 'boxes'} × ${formattedPrice}`;
+      formulaHint.textContent = `${formatBoxLabel(boxes)} × ${formattedPrice}`;
       totalDisplay.textContent = formattedTotal;
 
       cardProductName.textContent = product;
-      cardBoxAmount.textContent = `${boxes} ${boxes === 1 ? 'Box' : 'Boxes'}`;
+      cardBoxAmount.textContent = formatBoxLabel(boxes);
       cardBoxPrice.textContent = formattedPrice;
       cardTotalMoney.textContent = formattedTotal;
       cardBuyerName.textContent = buyer;
       cardBuyerPhone.textContent = fullPhone;
     }
 
-    // Generate High-Resolution Combined Receipt Canvas
+    // Generate High-Resolution Combined Receipt Canvas (RTL)
     function renderReceiptCanvas() {
       const width = 1080;
       const padding = 56;
@@ -564,33 +568,33 @@
         ctx.drawImage(loadedImage, drawX, drawY, drawW, drawH);
       } else {
         ctx.fillStyle = '#64748b';
-        ctx.font = '600 30px Inter, sans-serif';
+        ctx.font = '600 30px "Noto Naskh Arabic", sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('No Product Photo Selected', cardX + cardW / 2, cardY + imgDrawHeight / 2);
+        ctx.fillText('چ وێنەیێن بەرهەمی نەهاتینە هەلبژارتن', cardX + cardW / 2, cardY + imgDrawHeight / 2);
       }
 
       // Details Section
       let curY = cardY + imgDrawHeight + 54;
-      const leftX = cardX + 48;
       const rightX = cardX + cardW - 48;
+      const leftX = cardX + 48;
 
-      // Label: PRODUCT + Date
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#059669';
-      ctx.font = '700 22px Inter, sans-serif';
-      ctx.fillText('PRODUCT', leftX, curY);
-
+      // Label: PRODUCT (Right) + Date (Left)
       ctx.textAlign = 'right';
-      ctx.fillStyle = '#64748b';
-      ctx.font = '600 22px Inter, sans-serif';
-      ctx.fillText(getTodayFormatted(), rightX, curY);
+      ctx.fillStyle = '#059669';
+      ctx.font = '700 22px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText('بەرهەم', rightX, curY);
 
-      curY += 46;
       ctx.textAlign = 'left';
+      ctx.fillStyle = '#64748b';
+      ctx.font = '600 22px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(getTodayFormatted(), leftX, curY);
+
+      curY += 52;
+      ctx.textAlign = 'right';
       ctx.fillStyle = '#0f172a';
-      ctx.font = '800 38px Inter, sans-serif';
-      const productText = productNameInput.value.trim() || 'Product Name';
-      ctx.fillText(truncateText(ctx, productText, cardW - 96), leftX, curY);
+      ctx.font = '700 36px "Noto Naskh Arabic", sans-serif';
+      const productText = productNameInput.value.trim() || 'ناڤێ بەرهەمی';
+      ctx.fillText(truncateText(ctx, productText, cardW - 96), rightX, curY);
 
       // Divider
       curY += 32;
@@ -616,61 +620,62 @@
       const currency = currencySelect.value;
       const total = price * boxes;
 
-      const col1X = leftX + 32;
-      const col2X = leftX + (cardW - 96) * 0.40;
-      const col3X = rightX - 32;
+      const boxInnerW = cardW - 96;
+      const colRightX = rightX - 32;
+      const colMidX = rightX - boxInnerW * 0.36;
+      const colLeftX = leftX + 32;
 
-      // Col 1: Boxes
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#065f46';
-      ctx.font = '600 22px Inter, sans-serif';
-      ctx.fillText('Boxes', col1X, curY + 48);
-      ctx.fillStyle = '#0f172a';
-      ctx.font = '800 32px Inter, sans-serif';
-      ctx.fillText(`${boxes}`, col1X, curY + 98);
-
-      // Col 2: Price per Box
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#065f46';
-      ctx.font = '600 22px Inter, sans-serif';
-      ctx.fillText('Price / Box', col2X, curY + 48);
-      ctx.fillStyle = '#0f172a';
-      ctx.font = '800 30px Inter, sans-serif';
-      ctx.fillText(formatMoney(price, currency), col2X, curY + 98);
-
-      // Col 3: Total Money
+      // Col Right: Boxes
       ctx.textAlign = 'right';
+      ctx.fillStyle = '#065f46';
+      ctx.font = '600 22px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText('کارتۆن', colRightX, curY + 46);
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 30px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(formatBoxLabel(boxes), colRightX, curY + 98);
+
+      // Col Middle: Price per Box
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#065f46';
+      ctx.font = '600 22px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText('بهایێ کارتۆنێ', colMidX, curY + 46);
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 28px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(formatMoney(price, currency), colMidX, curY + 98);
+
+      // Col Left: Total Money
+      ctx.textAlign = 'left';
       ctx.fillStyle = '#047857';
-      ctx.font = '700 22px Inter, sans-serif';
-      ctx.fillText('TOTAL MONEY', col3X, curY + 48);
+      ctx.font = '700 22px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText('کویێ پارەی', colLeftX, curY + 46);
       ctx.fillStyle = '#064e3b';
-      ctx.font = '800 34px Inter, sans-serif';
-      ctx.fillText(formatMoney(total, currency), col3X, curY + 98);
+      ctx.font = '700 32px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(formatMoney(total, currency), colLeftX, curY + 98);
 
       // Buyer Name & Phone Row
       curY += boxH + 46;
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#64748b';
-      ctx.font = '700 21px Inter, sans-serif';
-      ctx.fillText('BUYER NAME', leftX, curY);
-
       ctx.textAlign = 'right';
-      ctx.fillText('PHONE NUMBER (IRAQ)', rightX, curY);
+      ctx.fillStyle = '#64748b';
+      ctx.font = '700 21px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText('ناڤێ کریاری', rightX, curY);
 
-      curY += 42;
+      ctx.textAlign = 'left';
+      ctx.fillText('ژمارا تەلەفۆنێ (عێراق)', leftX, curY);
+
+      curY += 46;
       const buyerText = buyerNameInput.value.trim() || '—';
       const phoneDigits = buyerPhoneInput.value.trim();
       const phoneText = phoneDigits ? `+964 ${phoneDigits}` : '+964 —';
 
-      ctx.textAlign = 'left';
-      ctx.fillStyle = '#0f172a';
-      ctx.font = '700 32px Inter, sans-serif';
-      ctx.fillText(truncateText(ctx, buyerText, (cardW - 96) * 0.48), leftX, curY);
-
       ctx.textAlign = 'right';
       ctx.fillStyle = '#0f172a';
-      ctx.font = '700 32px Inter, sans-serif';
-      ctx.fillText(phoneText, rightX, curY);
+      ctx.font = '700 30px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(truncateText(ctx, buyerText, (cardW - 96) * 0.48), rightX, curY);
+
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 30px "Noto Naskh Arabic", sans-serif';
+      ctx.fillText(phoneText, leftX, curY);
 
       ctx.restore();
       return canvas;
@@ -700,7 +705,7 @@
       const canvas = renderReceiptCanvas();
       const safeName = (productNameInput.value.trim() || 'product-sale')
         .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/[^a-z0-9\u0600-\u06ff]+/g, '-')
         .replace(/^-|-$/g, '');
 
       canvas.toBlob((blob) => {
@@ -713,7 +718,7 @@
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-        showToast('Image saved with all product and buyer details!');
+        showToast('وێنە دگەل هەمی پێزانینێن بەرهەمی و کریاری هاتە خەزنکرن!');
       }, 'image/png');
     });
 
@@ -727,12 +732,12 @@
           try {
             await navigator.share({
               files: [file],
-              title: productNameInput.value.trim() || 'Product Order',
-              text: `Order details for ${buyerNameInput.value.trim() || 'Buyer'}`
+              title: productNameInput.value.trim() || 'داخوازیا بەرهەمی',
+              text: `پێزانینێن داخوازیا کریاری: ${buyerNameInput.value.trim() || 'کریار'}`
             });
           } catch (err) {
             if (err.name !== 'AbortError') {
-              showToast('Could not open share menu. Try "Save Image with Info".', true);
+              showToast('لیستا هنارتنێ نەهاتە ڤەکرن. بکاربینە «خەزنکرنا وێنەی ب پێزانینا».', true);
             }
           }
         } else {
@@ -752,7 +757,7 @@
       buyerNameInput.value = '';
       buyerPhoneInput.value = '';
       updatePreview();
-      showToast('All fields cleared.');
+      showToast('هەمی خانە هاتنە پاککرن.');
     });
 
     updatePreview();
