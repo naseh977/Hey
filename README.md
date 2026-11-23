@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaleSnap — دروستکەرێ کارتا وەصلا بەرهەمی</title>
+  <title>zakaria zebari — دروستکەرێ کارتا وەصلا بەرهەمی</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
           </svg>
         </div>
         <div>
-          <h1 class="text-base font-bold tracking-tight text-slate-900 leading-tight">SaleSnap</h1>
+          <h1 class="text-base font-bold tracking-tight text-slate-900 leading-tight">zakaria zebari</h1>
           <p class="text-xs text-slate-500">دروستکەرێ وێنەی و وەصلا داخوازیا</p>
         </div>
       </div>
@@ -133,7 +133,6 @@
               class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-900 bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
             >
               <option value="IQD" selected>IQD (د.ع)</option>
-              <option value="USD">USD ($)</option>
             </select>
           </div>
         </div>
@@ -433,12 +432,12 @@
       return isNaN(num) ? 0 : num;
     }
 
-    function formatMoney(num, currency) {
+    function formatMoney(num) {
       const formatted = num.toLocaleString('en-US', {
         minimumFractionDigits: num % 1 === 0 ? 0 : 2,
         maximumFractionDigits: 2
       });
-      return `${formatted} ${currency}`;
+      return `${formatted} IQD`;
     }
 
     function formatBoxLabel(boxes) {
@@ -493,15 +492,14 @@
       const product = productNameInput.value.trim() || 'ناڤێ بەرهەمی';
       const price = parseNumericValue(boxPriceInput.value);
       const boxes = Math.max(1, parseInt(boxAmountInput.value, 10) || 1);
-      const currency = currencySelect.value;
       const total = price * boxes;
 
       const buyer = buyerNameInput.value.trim() || '—';
       const phone = buyerPhoneInput.value.trim();
       const fullPhone = phone ? `+964 ${phone}` : '+964 —';
 
-      const formattedPrice = formatMoney(price, currency);
-      const formattedTotal = formatMoney(total, currency);
+      const formattedPrice = formatMoney(price);
+      const formattedTotal = formatMoney(total);
 
       formulaHint.textContent = `${formatBoxLabel(boxes)} × ${formattedPrice}`;
       totalDisplay.textContent = formattedTotal;
@@ -617,7 +615,6 @@
 
       const price = parseNumericValue(boxPriceInput.value);
       const boxes = Math.max(1, parseInt(boxAmountInput.value, 10) || 1);
-      const currency = currencySelect.value;
       const total = price * boxes;
 
       const boxInnerW = cardW - 96;
@@ -641,7 +638,7 @@
       ctx.fillText('بهایێ کارتۆنێ', colMidX, curY + 46);
       ctx.fillStyle = '#0f172a';
       ctx.font = '700 28px "Noto Naskh Arabic", sans-serif';
-      ctx.fillText(formatMoney(price, currency), colMidX, curY + 98);
+      ctx.fillText(formatMoney(price), colMidX, curY + 98);
 
       // Col Left: Total Money
       ctx.textAlign = 'left';
@@ -650,7 +647,7 @@
       ctx.fillText('کویێ پارەی', colLeftX, curY + 46);
       ctx.fillStyle = '#064e3b';
       ctx.font = '700 32px "Noto Naskh Arabic", sans-serif';
-      ctx.fillText(formatMoney(total, currency), colLeftX, curY + 98);
+      ctx.fillText(formatMoney(total), colLeftX, curY + 98);
 
       // Buyer Name & Phone Row
       curY += boxH + 46;
@@ -713,7 +710,7 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `${safeName || 'receipt'}-salesnap.png`;
+        link.download = `${safeName || 'receipt'}-zakaria-zebari.png`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
